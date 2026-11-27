@@ -1,0 +1,11 @@
+package com.university.modules.week07;
+import javafx.application.Application;import javafx.event.*;import javafx.geometry.Insets;import javafx.scene.Scene;import javafx.scene.control.*;import javafx.scene.input.*;import javafx.scene.layout.*;import javafx.stage.Stage;
+/** Week 7: event filter/handler, keyboard/mouse, drag/drop, and a custom event. */
+public class EventHandlingDemo extends Application {
+ private static final EventType<Event> LOGIN_SUCCESS=new EventType<>(Event.ANY,"LOGIN_SUCCESS");
+ private static final class LoginSuccessEvent extends Event {final String username;LoginSuccessEvent(String name){super(LOGIN_SUCCESS);username=name;}}
+ @Override public void start(Stage stage){VBox root=new VBox(12);root.setPadding(new Insets(18));Label target=new Label("Drop a message here");target.setMinSize(320,100);target.setStyle("-fx-border-color:#536dfe;-fx-padding:24;");Label status=new Label("Ready");Button fire=new Button("Fire custom login event");
+ Label drag=new Label("Drag this text");drag.setOnDragDetected(e->{Dragboard db=drag.startDragAndDrop(TransferMode.COPY);ClipboardContent c=new ClipboardContent();c.putString("Week 7 drag payload");db.setContent(c);e.consume();});target.setOnDragOver(e->{if(e.getGestureSource()!=target&&e.getDragboard().hasString())e.acceptTransferModes(TransferMode.COPY);e.consume();});target.setOnDragDropped(e->{boolean ok=e.getDragboard().hasString();if(ok)status.setText("Dropped: "+e.getDragboard().getString());e.setDropCompleted(ok);e.consume();});
+ root.addEventFilter(MouseEvent.MOUSE_CLICKED,e->status.setText("Capture filter saw click on "+e.getTarget().getClass().getSimpleName()));root.setOnMouseClicked(e->status.setText("Bubble handler saw click"));root.addEventHandler(LOGIN_SUCCESS,e->status.setText("Custom event: login succeeded for "+((LoginSuccessEvent)e).username));fire.setOnAction(e->root.fireEvent(new LoginSuccessEvent("Joel")));root.setOnKeyPressed(e->{if(e.getCode()==KeyCode.ESCAPE)status.setText("Escape key event received");});root.getChildren().addAll(new Label("Filter/handler + drag source/target + custom event"),drag,target,fire,status);Scene scene=new Scene(root,560,330);stage.setScene(scene);stage.setTitle("Week 7 — Events");stage.show();root.requestFocus();}
+ public static void main(String[]a){launch(a);}
+}

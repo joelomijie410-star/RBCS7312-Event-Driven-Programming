@@ -1,4 +1,4 @@
-# Week 1 — Event-driven programming
+# Week 01 — Event-driven basics
 
 ## Activity 1: Spot the components
 
@@ -36,3 +36,15 @@ Sources: barcode scanner, search field, checkout/return buttons, due-date timer.
 ## Activity 6: Self-assessment
 
 1. EDP reacts to events rather than imposing one fixed sequence. 2. Event sources emit events; listeners handle them. 3. A blocking handler prevents the UI loop from processing further work. 4. Use a background worker for slow I/O and marshal results back to the UI thread. 5. State machines make valid transitions explicit.
+
+## Code implementation
+
+Primary implementation: [`modules/week01/EventDrivenCalculator.java`](../../modules/week01/EventDrivenCalculator.java).
+
+## Reflection
+
+What was hardest about moving from a fixed sequence to user-controlled button events? Identify which variables represent program state and which event causes each transition.
+
+## Considerations
+
+Keep event handlers short; test divide-by-zero and reset behavior. This teaching calculator is intentionally small and does not implement operator precedence or chained expressions.

@@ -18,3 +18,15 @@
 ## Verification and known constraints
 
 Maven package compilation is checked in this environment. Runtime CRUD needs MySQL 8+, schema setup, local credentials and a graphical session; none of those were supplied, so live database integration is not claimed. `program_id` is nullable because the guided capstone form does not collect a program; an extension should add a program selector and persist its selected foreign key. Passwords are not committed.
+
+## Code implementation
+
+Primary implementation: [`src/main/java/com/university/App.java`](../../src/main/java/com/university/App.java).
+
+## Reflection
+
+How does the capstone separate UI events, background database work, observable table data, and scheduled work? What design improvement would you prioritize next?
+
+## Considerations
+
+A live MySQL test requires a locally configured server and credentials. SQL uses prepared statements; credentials must remain outside version control. The current form does not select a program, so program_id is nullable.

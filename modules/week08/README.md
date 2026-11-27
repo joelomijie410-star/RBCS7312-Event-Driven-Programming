@@ -1,4 +1,4 @@
-# Week 8 — Properties and bindings
+# Week 08 — JavaFX properties and bindings
 
 1. **Observable model:** use `StringProperty`, `IntegerProperty`, etc. so views can observe a field; expose property getters for controls/table columns and ordinary getters for domain logic.
 2. **Listeners:** `ChangeListener` receives old/new values; `InvalidationListener` reports that a value became invalid and can be more lazy. Remove listeners when their owner is disposed if they retain references.
@@ -7,3 +7,15 @@
 5. **Reactive registration capstone:** the submit button in the University app binds `disableProperty` to emptiness of all required fields; email format is checked in the event handler before persistence.
 
 The `Student` model uses JavaFX properties; TableView columns observe them directly. The model properties remain the canonical displayed state.
+
+## Code implementation
+
+Primary implementation: [`src/main/java/com/university/modules/week08/ReactiveFormDemo.java`](../../src/main/java/com/university/modules/week08/ReactiveFormDemo.java).
+
+## Reflection
+
+Which properties are canonical state, and why is the submit button disabled through a binding instead of repeatedly toggled?
+
+## Considerations
+
+Bidirectional bindings should be used sparingly to avoid competing sources of truth. This demo checks non-empty values only; production forms need format and server-side validation.

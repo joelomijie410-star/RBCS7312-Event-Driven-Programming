@@ -1,4 +1,4 @@
-# Week 3 — Swing GUI construction
+# Week 03 — Swing windows and layouts
 
 ## Activity 1: First window
 A `JFrame` is the top-level window. Create/show it on the EDT with `SwingUtilities.invokeLater`, select a close operation, set size or pack, and show it only after components are installed.
@@ -17,3 +17,15 @@ See `StudentPortal.java`. It combines a header, search controls, student table, 
 
 ## Self-check
 `invokeLater` queues GUI initialization on AWT-EventQueue. `pack()` sizes around preferred component sizes. A layout manager adapts when the window is resized. A scroll pane provides scrolling for a table/list. UI freeze means the EDT is occupied.
+
+## Code implementation
+
+Primary implementation: [`modules/week03/StudentPortal.java`](../../modules/week03/StudentPortal.java).
+
+## Reflection
+
+How does the layout adapt when the window is resized? Which pieces would be model, view, and controller in a real student portal?
+
+## Considerations
+
+All Swing construction is queued on the EDT. Table rows are sample data only; persistence and search behavior are not implemented.

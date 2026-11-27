@@ -1,4 +1,4 @@
-# Week 2 — Observer pattern and notifications
+# Week 02 — Observer pattern
 
 ## Activity 1: Weather station
 `WeatherStation.java` has a subject that stores observers, a weather reading, and three independent displays. Register/unregister controls subscription; update sends a snapshot of temperature/humidity/pressure. This avoids the subject depending on specific display classes.
@@ -20,3 +20,15 @@ Replace direct calls such as `dashboard.refresh(); logger.write(); alert.send()`
 
 ## Activity 5: Self-check
 The subject owns subscription state; observers own their reactions. A publisher should notify from a stable snapshot if callbacks may change subscriptions. Avoid invoking arbitrary observers while holding a lock. Use JavaFX bindings for values displayed in JavaFX; use domain events for business events such as `StudentRegistered`.
+
+## Code implementation
+
+Primary implementation: [`modules/week02/WeatherStation.java`](../../modules/week02/WeatherStation.java).
+
+## Reflection
+
+Which components can now be added or removed without changing the publisher? What should happen if one observer throws an exception?
+
+## Considerations
+
+Observers are called synchronously in this sample. Production systems should define threading, exception isolation, and subscription lifetime policies.

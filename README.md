@@ -1,49 +1,58 @@
 # RBCS7312 — Event-Driven Programming Portfolio
 
-**Author: Joel Omijie**
+**Author: Joel Omijie**  
+**Course:** RBCS7312 · September–December 2026
 
-This repository is a worked portfolio for the supplied RBCS7312 Sep–Dec 2026 course pack. It turns the course’s concepts into a progression of activities and finishes with a JavaFX University Management System. It is intended as a learning aid: read the explanations, run each activity, and be ready to explain/modify the work yourself.
+This repository is Joel Omijie’s weekly portfolio for the event-driven programming course. It is arranged as learning modules that pair the weekly assignment concepts with implementation/code, reflection prompts, and practical considerations. The goal is to show the progression from event sources and listeners to reactive JavaFX interfaces and asynchronous application architecture.
 
-## Understand the course
+## Portfolio guide
 
-Event-driven programming reverses the control flow of a simple script. The program registers listeners; the runtime waits for events (clicks, key presses, data changes, timers), dispatches each event to a handler, and the handler updates state or asks another component to do work. A sound design separates the event source, event object, listener/handler, and work being performed. GUI work must happen on the UI thread (Swing EDT / JavaFX Application Thread); slow I/O belongs on background workers.
+Event-driven programs register reactions to events instead of imposing one fixed execution sequence. A source (button, key, timer, sensor) produces an event; a handler/listener reacts; the model changes; and the view reflects that change. Swing work must run on the Event Dispatch Thread (EDT), JavaFX UI changes on the JavaFX Application Thread, and slow I/O on background workers. The Observer pattern supports loosely coupled notifications, while properties/bindings support observable state in JavaFX.
 
-The course sequence is: Week 1 event concepts and event loops; Week 2 Observer/custom notification; Week 3 Swing windows, components, layouts and EDT; Week 4 Swing listeners/forms/input; Week 5 lists, tables, trees, renderers, menus/dialogs; Week 6 JavaFX stages/layouts/FXML; Week 7 event propagation, mouse/key, drag-and-drop and custom events; Week 8 observable properties/listeners/bindings; Week 9 Task/Service and progress; Week 10 architecture, database work and scheduled tasks.
+Each `modules/weekNN/README.md` includes the week’s outcomes, activity evidence, implementation links, a reflection, and considerations/limitations. Runnable examples live beside the module notes where practical; the larger JavaFX modules live under `src/main/java/com/university/modules/` so they share the Maven dependency setup.
 
-## Activities and where to find the work
+| Module | Focus | Implementation |
+|---|---|---|
+| [Week 1](modules/week01/README.md) | Event sources, event loop, procedural vs event-driven design | [EventDrivenCalculator.java](modules/week01/EventDrivenCalculator.java) |
+| [Week 2](modules/week02/README.md) | Observer pattern and notification mechanisms | [WeatherStation.java](modules/week02/WeatherStation.java) |
+| [Week 3](modules/week03/README.md) | Swing windows, components, layouts, EDT | [StudentPortal.java](modules/week03/StudentPortal.java) |
+| [Week 4](modules/week04/README.md) | Action/item/document listeners, input and validation | [Counter.java](modules/week04/Counter.java) |
+| [Week 5](modules/week05/README.md) | Lists, tables, trees, menus, dialogs, renderers | [FileManagerMockup.java](modules/week05/FileManagerMockup.java) |
+| [Week 6](modules/week06/README.md) | JavaFX Stage/Scene, layouts, FXML and controller | [LayoutsDemo.java](src/main/java/com/university/modules/week06/LayoutsDemo.java), [FXMLLoginDemo.java](src/main/java/com/university/modules/week06/FxmlLoginDemo.java) |
+| [Week 7](modules/week07/README.md) | Filters/handlers, mouse/key, drag and drop, custom event | [EventHandlingDemo.java](src/main/java/com/university/modules/week07/EventHandlingDemo.java) |
+| [Week 8](modules/week08/README.md) | Observable properties, listeners, bindings, reactive form | [ReactiveFormDemo.java](src/main/java/com/university/modules/week08/ReactiveFormDemo.java) |
+| [Week 9](modules/week09/README.md) | Task, progress, background work and UI-thread safety | [AsyncTaskDemo.java](src/main/java/com/university/modules/week09/AsyncTaskDemo.java) |
+| [Week 10](modules/week10/README.md) | Event-driven architecture and university-system capstone | [App.java](src/main/java/com/university/App.java) |
 
-| Course section | Completed evidence |
-|---|---|
-| Week 1 — identify event sources/handlers, event-loop reasoning, procedural vs event-driven, repair exercise, design and self-assessment | [`activities/week01/ACTIVITIES.md`](activities/week01/ACTIVITIES.md) and [`activities/week01/EventDrivenCalculator.java`](activities/week01/EventDrivenCalculator.java) |
-| Week 2 — custom Observer, legacy Observer discussion, refactor, compare mechanisms | [`activities/week02/ACTIVITIES.md`](activities/week02/ACTIVITIES.md), [`WeatherStation.java`](activities/week02/WeatherStation.java) |
-| Week 3 — Swing frame, controls, layouts, EDT, student portal mockup | [`activities/week03/ACTIVITIES.md`](activities/week03/ACTIVITIES.md), [`StudentPortal.java`](activities/week03/StudentPortal.java) |
-| Week 4 — listeners, form validation, counter, mouse/key interactions | [`activities/week04/ACTIVITIES.md`](activities/week04/ACTIVITIES.md), [`Counter.java`](activities/week04/Counter.java) |
-| Week 5 — renderers, JTable, tree/tabs, menus/toolbars/dialogs/file manager | [`activities/week05/ACTIVITIES.md`](activities/week05/ACTIVITIES.md), [`FileManagerMockup.java`](activities/week05/FileManagerMockup.java) |
-| Week 6 — JavaFX window/layouts/FXML/dashboard | [`activities/week06/ACTIVITIES.md`](activities/week06/ACTIVITIES.md) |
-| Week 7 — filters/handlers, mouse/key, drag-drop, custom events | [`activities/week07/ACTIVITIES.md`](activities/week07/ACTIVITIES.md) |
-| Week 8 — observable model, listeners, bindings, reactive form | [`activities/week08/ACTIVITIES.md`](activities/week08/ACTIVITIES.md) |
-| Week 9 — blocking vs background, Task/progress/Service | [`activities/week09/ACTIVITIES.md`](activities/week09/ACTIVITIES.md) |
-| Week 10 — University Management System capstone | [`activities/week10/ACTIVITIES.md`](activities/week10/ACTIVITIES.md) and runnable application in `src/main/java/com/university/` |
+The course pack included two Week 6 IDE variants; they are consolidated into one JavaFX/Maven implementation. The Week 1–2 paper/design activities are represented by written responses in their module notes. Each weekly README distinguishes runnable implementation from conceptual discussion and calls out anything not backed by a live integration test.
 
-The Week 6 pack contains both NetBeans and VS Code editions of substantially the same exercise; this portfolio consolidates them rather than duplicating deliverables. The Week 1 and Week 2 paper/design activities are answered as written evidence rather than falsely represented as code. Week 3–9 written prompts/check questions are summarized with answers in each weekly activity file.
+## Build and run
 
-## Run the capstone
+Requirements: JDK 17 or newer and Maven. Compile the complete JavaFX project:
 
-Requirements: JDK 17+, Maven, MySQL 8+, and a graphical desktop session. Create tables with `db/schema.sql`, then configure credentials as environment variables (do not commit passwords):
+```bash
+mvn clean package
+```
+
+Run the capstone (requires MySQL for real student records):
 
 ```bash
 export RBCS_DB_URL='jdbc:mysql://localhost:3306/university_db?serverTimezone=UTC'
 export RBCS_DB_USER='root'
 export RBCS_DB_PASSWORD='your-local-password'
-mvn clean javafx:run
+mvn javafx:run
 ```
 
-The UI starts even if MySQL is not available; database errors are shown in the status area. Saving/loading are JavaFX `Task`s on background threads, and the scheduler updates the status every five seconds on the JavaFX thread. The form binds button availability to all required fields and validates email before inserting. `Database` uses prepared statements and reads secrets only from the process environment.
+Initialize the schema with [`db/schema.sql`](db/schema.sql). Do not commit database credentials or real student information. Database integration was not exercised without a configured MySQL instance.
 
-## Validate and learn
+Run a JavaFX weekly module by overriding the configured main class, for example:
 
 ```bash
-mvn -q -DskipTests package
+mvn javafx:run -Dapp.mainClass=com.university.modules.week07.EventHandlingDemo
 ```
 
-A database integration check requires a local MySQL instance and credentials, which are intentionally not included. See each activity note for its concept, answer, and limitations. Avoid pasting passwords or personal student records into commits.
+Other main classes include `com.university.modules.week06.LayoutsDemo`, `com.university.modules.week06.FxmlLoginDemo`, `com.university.modules.week08.ReactiveFormDemo`, and `com.university.modules.week09.AsyncTaskDemo`. Swing activity examples can be compiled from their respective `modules/weekNN` folders with `javac FileName.java`; use a desktop environment to open the windows.
+
+## Portfolio integrity
+
+A successful compile verifies that source code builds; it does not prove every GUI path or database integration was exercised. The notes explicitly mark mockups and environment-dependent behaviors. Reflections are prompts to help Joel explain design decisions and further develop the work rather than claims of external assessment or instructor approval.

@@ -1,4 +1,4 @@
-# Week 4 — Event listeners and interaction
+# Week 04 — Swing event listeners
 
 ## Activities 1–2: ActionListener styles
 Buttons and menu items use `ActionListener`; it may be expressed as a named class (reusable), anonymous class (local), or lambda (concise). The listener receives an `ActionEvent`; `getSource()` identifies the component, while action commands can provide a stable semantic identifier.
@@ -14,3 +14,15 @@ A registration form should validate required fields and email, display actionabl
 
 ## Activity 6: Mouse and key interaction
 Mouse position and drag are reported by `MouseMotionListener`; key events require focus and should be used only where key bindings are not more suitable. Swing `InputMap`/`ActionMap` are generally preferable for application shortcuts.
+
+## Code implementation
+
+Primary implementation: [`modules/week04/Counter.java`](../../modules/week04/Counter.java).
+
+## Reflection
+
+Why should the lower-bound rule live in the handler/state update rather than only in a disabled button? How would you add a live registration validator?
+
+## Considerations
+
+Document listeners should not mutate the same document from inside their callback. Prefer key bindings over low-level KeyListener for app-wide shortcuts.

@@ -1,4 +1,4 @@
-# Week 5 — Advanced Swing components
+# Week 05 — Advanced Swing components
 
 ## Activity 1: JList and custom renderer
 Use `JList` for one-dimensional selectable data; a custom `ListCellRenderer` maps a model item to a component. Renderers are reused, so set every visual property on each invocation (including selected/focus colors) to prevent stale styling.
@@ -14,3 +14,15 @@ Menus/toolbars should invoke the same `Action` where possible so enabled state, 
 
 ## Activity 5: File manager capstone
 `FileManagerMockup.java` has a navigation tree, file table, menu and toolbar. It is an interface demonstration, not an operating-system file manager; file operations are intentionally not executed. This is safer than presenting a mock UI as destructive functional behavior.
+
+## Code implementation
+
+Primary implementation: [`modules/week05/FileManagerMockup.java`](../../modules/week05/FileManagerMockup.java).
+
+## Reflection
+
+How does the tree/table split communicate hierarchy and details? What safety properties matter before implementing file deletion or moves?
+
+## Considerations
+
+The mock manager is deliberately non-destructive. Real file operations need path validation, error handling, confirmation, and background I/O.
