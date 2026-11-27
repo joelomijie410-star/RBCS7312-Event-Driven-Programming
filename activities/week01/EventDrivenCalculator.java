@@ -1,0 +1,8 @@
+import javax.swing.*;import java.awt.*;
+/** Small event-driven calculator: each button is a source, its ActionListener is the handler. */
+public class EventDrivenCalculator extends JFrame {
+ private final JTextField display=new JTextField("0"); private double left; private String op=""; private boolean fresh=true;
+ EventDrivenCalculator(){super("Week 1 — Event-driven calculator");setDefaultCloseOperation(EXIT_ON_CLOSE);setSize(320,380);setLocationRelativeTo(null);display.setEditable(false);display.setHorizontalAlignment(JTextField.RIGHT);display.setFont(display.getFont().deriveFont(26f));add(display,BorderLayout.NORTH);JPanel p=new JPanel(new GridLayout(4,4,5,5));String[] keys={"7","8","9","/","4","5","6","*","1","2","3","-","C","0","=","+"};for(String k:keys){JButton b=new JButton(k);b.addActionListener(e->press(k));p.add(b);}add(p);}
+ private void press(String k){try{if(k.matches("[0-9]")){if(fresh){display.setText(k);fresh=false;}else display.setText(display.getText()+k);}else if(k.equals("C")){display.setText("0");op="";fresh=true;}else if(k.equals("=")){double right=Double.parseDouble(display.getText());double result=switch(op){case "+"->left+right;case "-"->left-right;case "*"->left*right;case "/"->{if(right==0)throw new ArithmeticException("Cannot divide by zero");yield left/right;}default->right;};display.setText(Double.toString(result));fresh=true;op="";}else{left=Double.parseDouble(display.getText());op=k;fresh=true;}}catch(Exception ex){display.setText(ex.getMessage());fresh=true;}}
+ public static void main(String[] a){SwingUtilities.invokeLater(()->new EventDrivenCalculator().setVisible(true));}
+}

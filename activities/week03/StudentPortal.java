@@ -1,0 +1,9 @@
+import javax.swing.*;import javax.swing.table.DefaultTableModel;import java.awt.*;
+/** Week 3 Swing mockup, fully runnable with the JDK. */
+public class StudentPortal extends JFrame{
+ StudentPortal(){super("Student Portal — Swing layout demo");setDefaultCloseOperation(EXIT_ON_CLOSE);setMinimumSize(new Dimension(760,440));setLayout(new BorderLayout(12,12));JLabel title=new JLabel("Student Portal   |   Academic Services");title.setBorder(BorderFactory.createEmptyBorder(14,16,8,16));title.setFont(title.getFont().deriveFont(Font.BOLD,20f));
+ JPanel filters=new JPanel(new FlowLayout(FlowLayout.LEFT));filters.add(new JLabel("Search"));filters.add(new JTextField(18));filters.add(new JLabel("Program"));filters.add(new JComboBox<>(new String[]{"All programs","Computer Science","Information Technology"}));filters.add(new JButton("Search"));JPanel top=new JPanel(new BorderLayout());top.add(title,BorderLayout.NORTH);top.add(filters,BorderLayout.SOUTH);add(top,BorderLayout.NORTH);
+ String[] cols={"Reg. No.","First name","Last name","Program","Status"};Object[][] rows={{"S1001","Amina","Khan","Computer Science","Active"},{"S1002","Daniel","Okoro","Information Technology","Active"},{"S1003","Grace","Mensah","Computer Science","Pending"}};JTable table=new JTable(new DefaultTableModel(rows,cols));add(new JScrollPane(table),BorderLayout.CENTER);
+ JPanel footer=new JPanel(new BorderLayout());footer.add(new JLabel("Showing 3 sample records"),BorderLayout.WEST);JPanel buttons=new JPanel(new FlowLayout(FlowLayout.RIGHT));buttons.add(new JButton("Add student"));buttons.add(new JButton("Export"));footer.add(buttons,BorderLayout.EAST);footer.setBorder(BorderFactory.createEmptyBorder(0,12,8,12));add(footer,BorderLayout.SOUTH);pack();setLocationRelativeTo(null);}
+ public static void main(String[]args){SwingUtilities.invokeLater(()->new StudentPortal().setVisible(true));}
+}
